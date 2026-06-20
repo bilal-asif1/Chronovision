@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Time Travel</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">⏳ Photo Time Travel</h1>
+                <p class="tagline">Photo Time Travel</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2 class="hero-title">Transform Your Photos Through Time</h2>
+                <p class="hero-description">
+                    Upload any image and experience different eras through advanced image processing techniques. 
+                    From the nostalgic 1920s to the futuristic 2080s, watch your photos travel through time.
+                </p>
+            </section>
+
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-card">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content" id="uploadContent">
+                            <div class="upload-icon">📷</div>
+                            <h3 class="upload-title">Drop your image here</h3>
+                            <p class="upload-text">or click to browse</p>
+                            <input type="file" id="fileInput" accept="image/*" hidden>
+                            <button class="btn btn-primary" id="browseBtn">Browse Files</button>
+                        </div>
+                        <div class="preview-container" id="previewContainer" style="display: none;">
+                            <img id="imagePreview" src="" alt="Image Preview">
+                            <button class="btn btn-secondary btn-small" id="changeImageBtn">Change Image</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filter Selection -->
+            <section class="filter-section" id="filterSection" style="display: none;">
+                <h3 class="section-title">Choose Time Era</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn" data-filter="1920s">
+                        <span class="filter-btn-icon">🎞️</span>
+                        <span class="filter-btn-text">1920s</span>
+                    </button>
+                    <button class="filter-btn" data-filter="1970s">
+                        <span class="filter-btn-icon">📼</span>
+                        <span class="filter-btn-text">1970s</span>
+                    </button>
+                    <button class="filter-btn" data-filter="1990s">
+                        <span class="filter-btn-icon">📸</span>
+                        <span class="filter-btn-text">1990s</span>
+                    </button>
+                    <button class="filter-btn" data-filter="2080s">
+                        <span class="filter-btn-icon">🌃</span>
+                        <span class="filter-btn-text">2080s</span>
+                    </button>
+                </div>
+                <div class="filter-descriptions">
+                    <div class="filter-desc" id="desc-1920s">Sepia, grain, scratches, faded old-photo effect</div>
+                    <div class="filter-desc" id="desc-1970s">Warm tones, low saturation, analog film look</div>
+                    <div class="filter-desc" id="desc-1990s">Vintage camera style, slight blur, film contrast</div>
+                    <div class="filter-desc" id="desc-2080s">Futuristic neon/cyberpunk style, glow effect</div>
+                </div>
+                <button class="btn btn-primary btn-large" id="applyFilterBtn">Apply Filter</button>
+            </section>
+
+            <!-- Loading Animation -->
+            <section class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Processing your image through time...</p>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <h3 class="section-title">Time Travel Complete</h3>
+                
+                <!-- Comparison Slider -->
+                <div class="comparison-container">
+                    <div class="comparison-slider" id="comparisonSlider">
+                        <div class="comparison-image comparison-original">
+                            <img id="originalImage" src="" alt="Original Image">
+                            <span class="comparison-label">Original</span>
+                        </div>
+                        <div class="comparison-image comparison-processed">
+                            <img id="processedImage" src="" alt="Processed Image">
+                            <span class="comparison-label" id="processedLabel">1920s</span>
+                        </div>
+                        <div class="slider-handle" id="sliderHandle">
+                            <div class="slider-button">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 18l-6-6 6-6"/>
+                                </svg>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 18l6-6-6-6"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="newImageBtn">Upload New Image</button>
+                    <button class="btn btn-primary" id="downloadBtn">Download Image</button>
+                </div>
+            </section>
+
+            <!-- Image Processing Techniques Section -->
+            <section class="techniques-section">
+                <h3 class="section-title">Image Processing Techniques Used</h3>
+                <div class="techniques-grid">
+                    <div class="technique-card">
+                        <div class="technique-icon">🎨</div>
+                        <h4 class="technique-name">Color Transformation</h4>
+                        <p class="technique-text">RGB to sepia matrices, HSV color space adjustments, LAB luminance enhancement</p>
+                    </div>
+                    <div class="technique-card">
+                        <div class="technique-icon">📊</div>
+                        <h4 class="technique-name">Histogram Adjustment</h4>
+                        <p class="technique-text">CLAHE (Contrast Limited Adaptive Histogram Equalization) for dynamic range optimization</p>
+                    </div>
+                    <div class="technique-card">
+                        <div class="technique-icon">📡</div>
+                        <h4 class="technique-name">Noise Addition</h4>
+                        <p class="technique-text">Gaussian noise for film grain simulation, random scratch generation</p>
+                    </div>
+                    <div class="technique-card">
+                        <div class="technique-icon">✨</div>
+                        <h4 class="technique-name">Edge Enhancement</h4>
+                        <p class="technique-text">Laplacian edge detection, unsharp masking, bilateral filtering for glow effects</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <h3 class="section-title">About This Project</h3>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4 class="info-title">Digital Image Processing</h4>
+                        <p class="info-text">
+                            This project demonstrates real image processing techniques using OpenCV and NumPy, 
+                            not just CSS filters. Each era uses specific transformations like sepia matrices, 
+                            histogram equalization, bilateral filters, and color space conversions.
+                        </p>
+                    </div>
+                    <div class="info-card">
+                        <h4 class="info-title">Technologies Used</h4>
+                        <ul class="info-list">
+                            <li><strong>Backend:</strong> Python Flask</li>
+                            <li><strong>Image Processing:</strong> OpenCV, Pillow, NumPy</li>
+                            <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript</li>
+                            <li><strong>Techniques:</strong> Color space transforms, CLAHE, bilateral filtering, convolution</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">ChronoVision – Digital Image Processing Project</p>
+            <div class="team-section">
+                <h4 class="team-title">Project Team</h4>
+                <div class="team-members">
+                    <div class="team-member">
+                        <div class="member-avatar">👨‍💻</div>
+                        <span class="member-role">Lead Developer</span>
+                        <span class="member-name">Muhammad Arbab</span>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">🔬</div>
+                        <span class="member-role">Image Processing Specialist</span>
+                        <span class="member-name">M Arslan</span>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">🎨</div>
+                        <span class="member-role">UI/UX Designer</span>
+                        <span class="member-name">M Zain</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
