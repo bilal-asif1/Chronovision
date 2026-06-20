@@ -211,13 +211,6 @@ For a class or demo presentation:
 4. Demonstrate the before-and-after comparison slider.
 5. Mention the color space conversions and CLAHE enhancement.
 
-## Author
-
-ChronoVision Team
-
-- Muhammad Arbab
-- M Arslan
-- M Zain
 
 ## License
 
